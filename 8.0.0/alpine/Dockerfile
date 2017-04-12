@@ -1,7 +1,7 @@
 FROM alpine:3.4
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 7.8.0
+ENV NODE_VERSION 8.0.0-test201704119b43f9c487
 
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
@@ -32,8 +32,8 @@ RUN addgroup -g 1000 node \
     gpg --keyserver pgp.mit.edu --recv-keys "$key" || \
     gpg --keyserver keyserver.pgp.com --recv-keys "$key" ; \
   done \
-    && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
-    && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+    && curl -SLO "https://nodejs.org/download/test/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
+    && curl -SLO "https://nodejs.org/download/test/v$NODE_VERSION/SHASUMS256.txt.asc" \
     && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
     && grep " node-v$NODE_VERSION.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
     && tar -xf "node-v$NODE_VERSION.tar.xz" \

@@ -3,9 +3,7 @@ set -e
 
 hash git 2>/dev/null || { echo >&2 "git not found, exiting."; }
 
-array_4_8='4 argon';
-array_6_10='6 boron';
-array_7_8='7 latest';
+array_8_0='8 carbon';
 
 cd $(cd ${0%/*} && pwd -P);
 
@@ -13,7 +11,7 @@ self="$(basename "$BASH_SOURCE")"
 
 versions=( */ )
 versions=( "${versions[@]%/}" )
-url='https://github.com/nodejs/docker-node'
+url='https://github.com/sirgallifrey/docker-node-test'
 
 # sort version numbers with highest first
 IFS=$'\n'; versions=( $(echo "${versions[*]}" | sort -r) ); unset IFS
@@ -25,7 +23,7 @@ fileCommit() {
 
 echo "# this file is generated via ${url}/blob/$(fileCommit "$self")/$self"
 echo
-echo "Maintainers: The Node.js Docker Team <${url}> (@nodejs)"
+echo "Maintainers: Adilson Schmitt Junior <${url}>"
 echo "GitRepo: ${url}.git"
 echo
 

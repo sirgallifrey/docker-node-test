@@ -1,4 +1,4 @@
-FROM buildpack-deps:wheezy
+FROM buildpack-deps:jessie
 
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
@@ -21,10 +21,10 @@ RUN set -ex \
   done
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 6.10.2
+ENV NODE_VERSION 8.0.0-test201704119b43f9c487
 
-RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
-  && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
+RUN curl -SLO "https://nodejs.org/download/test/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
+  && curl -SLO "https://nodejs.org/download/test/v$NODE_VERSION/SHASUMS256.txt.asc" \
   && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
   && grep " node-v$NODE_VERSION-linux-x64.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
