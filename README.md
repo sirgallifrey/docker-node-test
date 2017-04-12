@@ -4,7 +4,7 @@ This is a fork from [](https://github.com/nodejs/docker-node) but using tests bu
 
 - test-build.sh not working
 
-- I had to remove the gpg command for the build work, I guess those tests images are not signed
+- I had to remove the gpg command for the build to work, I guess those tests images are not signed
 
 - the process is little automated
 
